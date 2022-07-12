@@ -1,18 +1,20 @@
 import axios from 'axios';
-const url="https://mytinerary-yusti.herokuapp.com"
+
 
 const citiesActions={
 
     getAllCities:()=>{
         return async ( dispatch, getState)=>{
-            const response = await axios.get(`${url}/api/cities`)
+            const response = await axios.get('https://mytinerary-yusti.herokuapp.com/api/cities')
+            console.log("ciudadesdwdwdwdwdwdwdwd")
+            console.log(response)
             dispatch({ type:"GET_CITIES", payload: response.data.response.cities})
             //console.log(response.data.response.cities);
         }
     },
     getOneCity:(id)=>{
         return async (dispatch, getState)=>{
-            const response= await axios.get(`${url}/api/cities/${id}`)
+            const response= await axios.get(`https://mytinerary-yusti.herokuapp.com/api/cities/${id}`)
             // console.log(response.data.response);
             dispatch({type:"ONE_CITY", payload: response.data.response})
         }
@@ -30,7 +32,7 @@ const citiesActions={
         //console.log(token);
         return async()=>{
             try{
-                let res= await axios.put(`${url}/api/likes/${id}`, {},
+                let res= await axios.put(`https://mytinerary-yusti.herokuapp.com/api/likes/${id}`, {},
                 // let res= await axios.put(url+'/api/likes/'+ id, {},
                 {
                     headers:{

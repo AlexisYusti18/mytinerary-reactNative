@@ -1,23 +1,14 @@
-// import { useEffect } from "react"
-// import {useDispatch, useSelector} from 'react-redux';
-// import citiesActions from '../../redux/actions/citiesActions'
-// import { Image, Text, View,TouchableOpacity, Button } from 'react-native';
-// import { useParams } from "react-router-dom";
+import { StyleSheet,ScrollView} from 'react-native';
+import CallToAction from '../components/CallToAction';
+import CarouselHome from '../components/CarouselHome';
+import Welcome from '../components/Welcome'
 
-
-// export default function Home(){
-//     const {id}= useParams()
-//     const dispatch=useDispatch()
-//     useEffect(()=>{
-//         dispatch(citiesActions.getOneCity(id))
-//         //eslint-disable-next-line
-//     },[])
-//     const cities=useSelector(store=> store.citiesReducer.oneCity)
-//     console.log(cities)
-
-//     return(
-//         <>
-            
-//         </>
-//     )
-// }
+export default function Home(){
+    return(
+        <ScrollView>
+            <Welcome/>
+            <CallToAction/>
+            <CarouselHome/>
+        </ScrollView>
+    )
+}
