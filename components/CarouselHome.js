@@ -33,6 +33,9 @@ export default function CarouselHome() {
         snapToInterval={420}
         scrollEventThrottle={16}
         pagingEnabled
+        autoplay={true}
+        autoplayDelay={2000}
+        autoplayInterval={3000}
         renderItem={()=>{
           return(
             <>
