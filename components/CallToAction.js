@@ -5,7 +5,7 @@ export default function CallToAction(){
     return(
         <View>
             <View style={styles.ctncall}>
-                <Image  styles={styles.logo}/>
+                <Image style={styles.logo}/>
                 <Text style={styles.titlecallTo}>Haven't you visited the city of your dreams yet?</Text>
                 <Button
                 title="CHOOSE YOUR NEXT DESTINATION NOW"
