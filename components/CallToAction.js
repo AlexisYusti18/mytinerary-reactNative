@@ -10,7 +10,6 @@ export default function CallToAction(){
                 <Button
                 title="CHOOSE YOUR NEXT DESTINATION NOW"
                 color='#07311f'
-                
                 />
             </View>
         </View>
