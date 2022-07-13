@@ -33,9 +33,10 @@ const userActions={
                         dispatch({
                             type:"MESSAGE" ,
                             payload: {
-                                view:true,
-                                message:user.data.message, 
-                                success:user.data.success
+                                //ALERT
+                                view:true, //MOSTRAR LA VISTA
+                                message:user.data.message, //MUESTRA MENSAJE 
+                                success:user.data.success //COLOR DE ALERT
                         }
                         
                     })

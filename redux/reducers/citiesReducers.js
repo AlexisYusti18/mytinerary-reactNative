@@ -1,4 +1,3 @@
-//DEFINO EL ESTADO INICIAL
 const initialState={
     cities: [],
     filterCities:[],

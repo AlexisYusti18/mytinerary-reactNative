@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, Image,ImageBackground,ScrollView,SafeAreaView} from 'react-native';
-import {AppLoading} from 'expo';
 
 export default function Welcome(){
 

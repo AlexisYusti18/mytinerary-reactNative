@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
-import citiesReducer from '../reducers/citiesReducer';
-import userReducer from './userReducer'
+import citiesReducer from '../../redux/reducers/citiesReducers'
+import userReducer from '../../redux/reducers/userReducers'
 
 const mainReducer= combineReducers({
     citiesReducer, userReducer
