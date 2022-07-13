@@ -1,5 +1,5 @@
 import React, { useEffect,useRef} from 'react';
-import { StyleSheet,Text, View,ImageBackground,Dimensions,Animated,FlatList} from 'react-native';
+import { StyleSheet,Text, View,ImageBackground,Dimensions,Animated,FlatList,Image} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions';
 
@@ -20,8 +20,7 @@ export default function CarouselHome() {
 
   return (
     <View style={styles.carouselctn}>
-        <Text>POPULAR MYTINERARYS</Text>
-
+        <Text style={styles.titleCarousel}>POPULAR MYTINERARYS</Text>
         <Animated.FlatList
         data={cities}
         horizontal={true}
@@ -31,18 +30,17 @@ export default function CarouselHome() {
         //PARA EVITAR QUE AL DESPLAZAR SE VAYA RAPIDO
         decelerationRate={0}
         //PARA QUE CUANDO PASE DE IMG ESA IMG OCUPE TODO EL ESPACIO
-        snapToInterval={SPACE_CTN}
+        snapToInterval={420}
         scrollEventThrottle={16}
         pagingEnabled
         renderItem={()=>{
           return(
             <>
               {cities.map((city,index)=>(
-                <View style={{width:SPACE_CTN, margin:10}} key={index}>
+                <View style={{width:420, margin:2}} key={index}>
                   <Animated.View style={styles.imagectn}>
-                    <ImageBackground style={styles.imgcarousel}  source={{uri:city.image}}>
-                      <Text style={styles.titlecity}>{city.name}</Text>
-                    </ImageBackground>
+                    <Image style={styles.imgcarousel}  source={{uri:city.image}}></Image>
+                    <Text style={styles.titlecity}>{city.name}</Text>
                   </Animated.View>
                 </View>
               ))}
@@ -57,7 +55,7 @@ const styles = StyleSheet.create({
   carouselctn:{
     justifyContent:'center',
     alignItems:'center',
-    backgroundColor:'#fff'
+    backgroundColor:'#1a2221'
   },
   imgcarousel:{
     justifyContent:'center',
@@ -70,18 +68,24 @@ const styles = StyleSheet.create({
     marginBottom:10
   },
   imagectn:{
+    width:350,
     marginHorizontal:SPACE,
-                      padding:SPACE,
-                      borderRadius:34,
-                      backgroundColor:'#fff',
-                      alignItems:'center',
+    padding:SPACE,
+    borderRadius:34,
+    backgroundColor:'#fff',
+    alignItems:'center',
+    justifyContent:'center'
   },
   titlecity:{
-    fontSize:30,
-    color:'white',
+    fontSize:25,
+    color:'black',
     textShadowColor:'red',
-    zIndex:3
-  }
+  },
+  titleCarousel:{
+    color:'white',
+    marginTop:20,
+    fontSize:30
+  },
 })
 
 
