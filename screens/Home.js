@@ -1,10 +1,8 @@
 import { ScrollView, StyleSheet} from 'react-native';
 import Welcome from '../components/Welcome'
 import CallToAction from '../components/CallToAction';
-import CarouselHome from '../components/CarouselHome';
 import Footer from '../components/Footer'
-import { StatusBar } from 'expo-status-bar';
-
+import CarouselOptional from '../components/CarouselOptional'
 
 export default function Home(props){
     // console.log(props);
@@ -12,13 +10,13 @@ export default function Home(props){
             <ScrollView style={styles.ctn}>
                 <Welcome/>
                 <CallToAction navigation={props.navigation}/>
-                <CarouselHome/>
+                <CarouselOptional/>
                 <Footer/>
             </ScrollView>
         )
 }
 const styles=StyleSheet.create({
     ctn:{
-        backgroundColor:'red'
+        backgroundColor:'#1a2221'
     },
 })

@@ -9,7 +9,10 @@ const Menu= createDrawerNavigator()
 
 export default function DrawerNavigation(props){
     return(
-        <Menu.Navigator >
+        <Menu.Navigator screenOptions={{
+                drawerActiveBackgroundColor:'#492c36',
+                drawerActiveTintColor:'white',
+                }}>
             <Menu.Screen name="Home" component={Home}/>
             <Menu.Screen name="Cities" component={Cities}/>
             <Menu.Screen name="SignUp" component={SignUp}/>
