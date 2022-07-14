@@ -1,29 +1,25 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, {useRef,useEffect} from 'react';
 import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
-import {View,Text,Dimensions,StyleSheet,TouchableOpacity,Platform,ImageBackground}from 'react-native';
+import {View,Text,Dimensions,StyleSheet,TouchableOpacity,Platform}from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions';
-import '../IgnoreWarnings'
+import {ViewPropTypes} from 'deprecated-react-native-prop-types';
 
 const {width: screenWidth} = Dimensions.get('window');
 
-const MyCarousel =()=> {
-    const dispatch=useDispatch()
-      useEffect(()=>{
-        dispatch(citiesActions.getAllCities())
-      },[])
-      const ENTRIES1= useSelector(store=> store.citiesReducer.cities)
-
-  const [entries, setEntries] = useState([]);
+export default function MyCarousel(){
+  const dispatch=useDispatch()
   const carouselRef = useRef(null);
-
+      
+  useEffect(()=>{
+        dispatch(citiesActions.getAllCities())
+        // setEntries(cities);
+      },[])
+  const cities= useSelector(store=> store.citiesReducer.cities)
+  
   const goForward = () => {
     carouselRef.current.snapToNext();
   };
-
-  useEffect(() => {
-    setEntries(ENTRIES1);
-  }, [])
 
   const renderItem = ({item, index}, parallaxProps) => {
     return (
@@ -48,14 +44,15 @@ const MyCarousel =()=> {
       <TouchableOpacity onPress={goForward}>
       </TouchableOpacity>
       <Carousel
+        layout={'stack'}
         ref={carouselRef}
         sliderWidth={screenWidth}
         sliderHeight={screenWidth}
         itemWidth={screenWidth - 60}
-        data={entries}
+        data={cities}
         loop={true}
         autoplay={true}
-        autoplayDelay={1000}
+        autoplayDelay={2000}
         autoplayInterval={3000}
         renderItem={renderItem}
         hasParallaxImages={true}
@@ -64,27 +61,26 @@ const MyCarousel =()=> {
   );
 };
 
-export default MyCarousel;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   item: {
     width: screenWidth - 60,
-    height: screenWidth - 60,
+    height: 400,
   },
   imageContainer: {
     flex: 1,
     marginBottom: Platform.select({ios: 0, android: 1}), // Prevent a random Android rendering issue
     backgroundColor: 'white',
     borderRadius: 8,
+    marginTop:10
   },
   image: {
     ...StyleSheet.absoluteFillObject,
     resizeMode: 'cover',
     justifyContent:'center',
-    alignItems:'center'
+    alignItems:'center',
   },
   title:{
     color:'red',

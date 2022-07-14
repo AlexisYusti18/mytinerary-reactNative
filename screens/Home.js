@@ -11,12 +11,12 @@ export default function Home(props){
                 <Welcome/>
                 <CallToAction navigation={props.navigation}/>
                 <CarouselOptional/>
-                <Footer/>
+                {/* <Footer/> */}
             </ScrollView>
         )
 }
 const styles=StyleSheet.create({
     ctn:{
-        backgroundColor:'#1a2221'
+        backgroundColor:'#1a2221', 
     },
 })
