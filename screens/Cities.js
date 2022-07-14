@@ -3,11 +3,12 @@ import { ScrollView} from 'react-native';
 import BannerCities from "../components/BannerCities";
 import Cards from "../components/Cards";
 
-export default function Cities(){
+export default function Cities(props){
+    // console.log(props)
     return(
         <ScrollView>
             <BannerCities/>
-            <Cards/>
+            <Cards navigation={props.navigation}/>
         </ScrollView>
     )
 }

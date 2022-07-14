@@ -1,12 +1,14 @@
 import React, {useEffect,useState} from "react"
-import {StyleSheet,ImageBackground,View,Text} from "react-native";
+import {StyleSheet,ImageBackground,View,Text,TouchableHighlight} from "react-native";
 
 import citiesActions from "../redux/actions/citiesActions"
 
 import {useDispatch, useSelector} from 'react-redux';
 import { Searchbar } from 'react-native-paper';
 
-export default function Cards(){
+export default function Cards(props){
+    // console.log('props cards')
+    // console.log(props)
     const dispatch=useDispatch()
     const [searchb, setSearchb] = useState("")
 
@@ -33,9 +35,11 @@ export default function Cards(){
             <View style={styles.citiesCtn}>
             {filter.length > 0 ? filter.map((city,index)=>(
                 <View key={index}>
-                    <ImageBackground style={styles.cards} source={{uri:city.image}}>
-                        <Text style={styles.titleCities}>{city.name}, {city.country}</Text>
-                    </ImageBackground>
+                    <TouchableHighlight onPress={()=>props.navigation.navigate("itineraries", {id:city._id})}>
+                        <ImageBackground style={styles.cards} source={{uri:city.image}}>
+                            <Text style={styles.titleCities}>{city.name}, {city.country}</Text>
+                        </ImageBackground>
+                    </TouchableHighlight>
                 </View>
             )) : 
                 <View>
