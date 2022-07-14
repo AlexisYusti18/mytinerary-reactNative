@@ -24,8 +24,11 @@ export default function Cards(){
 
     return(
         <View>
-            <View>
-                <Searchbar onChangeText={search} style={styles.search}/>
+            <View style={styles.ctnSearch}>
+                <Searchbar 
+                placeholderTextColor={'gray'}
+                placeholder={'search cities'}
+                onChangeText={search} style={styles.search}/>
             </View>
             <View style={styles.citiesCtn}>
             {filter.length > 0 ? filter.map((city,index)=>(
@@ -45,8 +48,13 @@ export default function Cards(){
 }
 
 const styles = StyleSheet.create({
+    ctnSearch:{
+        justifyContent:'center',
+        alignItems:'center',
+        height:100
+    },
     citiesCtn:{
-        backgroundColor:'#fff',
+        backgroundColor:'#1a2221',
         justifyContent:'center',
         alignItems:'center'
     },
@@ -62,7 +70,10 @@ const styles = StyleSheet.create({
         fontSize:40,
     },
     search:{
-        padding:10,
-        borderColor:'black',
+        width:300,
+        padding:2,
+        borderColor:'gray',
+        borderWidth:2,
+        borderStyle:'solid'
     }
 })

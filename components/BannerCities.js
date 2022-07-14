@@ -3,7 +3,7 @@ import {StyleSheet,ImageBackground, View,Text} from "react-native";
 export default function BannerCities(){
     return(
         <View>
-           <ImageBackground style={styles.backCities} source={require('../assets/backgroundHome.jpg')}>
+           <ImageBackground style={styles.backCities} source={require('../assets/fondo.jpg')}>
                 <Text style={styles.title}>Find your destination now!</Text>
            </ImageBackground>
         </View>
@@ -12,14 +12,17 @@ export default function BannerCities(){
 const styles = StyleSheet.create({
     backCities:{
         textAlign:'center',
-        height:600,
-        width:415,
+        height:400,
+        width:'100%',
         marginTop:30,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        resizeMode:'cover',
+        resizeMode:'center',
+        resizeMode:''
     },
     title:{
         color:'white',
-        fontSize:30
+        fontSize:30,
     }
 })
