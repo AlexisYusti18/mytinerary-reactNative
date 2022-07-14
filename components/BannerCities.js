@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
         textAlign:'center',
         height:400,
         width:'100%',
-        marginTop:30,
         justifyContent:'center',
         alignItems:'center',
         resizeMode:'cover',
