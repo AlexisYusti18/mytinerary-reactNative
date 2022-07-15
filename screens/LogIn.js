@@ -29,8 +29,8 @@ function LogIn(props){
                     <Text>Log In with your account!</Text>
                     <View>
                         <View>
-                            <TextInput onChangeText={setEmail} style={styles.textInput} value={email} placeholder="Email"></TextInput>
-                            <TextInput onChangeText={setPassword} style={styles.textInput} value={password} placeholder="Password"></TextInput>
+                            <TextInput onChangeText={setEmail} style={styles.textInput} placeholder="Email"></TextInput>
+                            <TextInput onChangeText={setPassword} style={styles.textInput}  placeholder="Password"></TextInput>
                             <Button
                                 onPress={handleSubmit}
                                 title="log in"

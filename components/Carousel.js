@@ -16,6 +16,7 @@ export default function MyCarousel(){
         // setEntries(cities);
       },[])
   const cities= useSelector(store=> store.citiesReducer.cities)
+  // console.log(cities)
   
   const goForward = () => {
     carouselRef.current.snapToNext();
