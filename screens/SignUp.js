@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View,StyleSheet, ImageBackground,TextInput, Image,Text,TouchableOpacity,Button } from "react-native";
+import { View,StyleSheet,Picker,ImageBackground,TextInput,Image,Text,TouchableOpacity,Button} from "react-native";
 import userActions from '../redux/actions/usersActions';
 import { connect } from 'react-redux';
 
@@ -8,24 +8,26 @@ function SignUp(props){
     const roles= ["Select rol", "user"]
     const countrys= ["unselected","Argentina", "Uruguay","Chile","Bolivia","Peru","Brazil","Colombia","Venezuela","Paraguay","Ecuador"]
     const[selectCountry, setSelectCountry]= useState("unselected")
+    
+    const [name,setName]=useState()
+    const [lastName,setLastName]=useState()
+    const [email,setEmail]=useState()
+    const [password,setPassword]=useState()
+    const [imageUser,setImageUser]=useState()
 
     const selected=(event)=>{
         //console.log(event.target.value)
         setSelectCountry(event.target.value)
     }
-    const handleSubmit=(event)=>{
-        event.preventDefault()
+    const handleSubmit=()=>{
         const userData ={
-          name:event.target[2].value,
-          lastName:event.target[3].value,
-          email:event.target[4].value,
-          password:event.target[5].value,
-          imageUser:event.target[6].value,
-          role:event.target[7].value,
-          from:'signUp',
+          name:name,
+          lastName:lastName,
+          email:email,
+          password:password,
+          imageUser:imageUser,
           country:selectCountry
         }
-        event.target.reset()
         //console.log(event);
         props.signUp(userData)
         //console.log(userData);
@@ -45,14 +47,20 @@ function SignUp(props){
                     }}>
                          <Text style={styles.buttonLogin}>LogIn</Text>
                     </TouchableOpacity>
-                    <TextInput style={styles.textInput} placeholder='Name'></TextInput>
-                    <TextInput style={styles.textInput} placeholder='LastName'></TextInput>
-                    <TextInput style={styles.textInput} placeholder='Email'></TextInput>
-                    <TextInput style={styles.textInput} placeholder='Password'></TextInput>
-                    <TextInput style={styles.textInput} placeholder='Profile Pic'></TextInput>
+                    <TextInput onChangeText={setName} style={styles.textInput} placeholder='Name'></TextInput>
+                    <TextInput onChangeText={setLastName} style={styles.textInput} placeholder='LastName'></TextInput>
+                    <TextInput onChangeText={setEmail} style={styles.textInput} placeholder='Email'></TextInput>
+                    <TextInput onChangeText={setPassword} style={styles.textInput} placeholder='Password'></TextInput>
+                    <TextInput onChangeText={setImageUser} style={styles.textInput} placeholder='Profile Pic'></TextInput>
+                    {/* <Picker>
+                        {countrys.map((country,index)=>
+                            <Picker.Item label={country} value={country}/>
+                        )}
+                    </Picker> */}
                     <Button
-                            title="Create Acount"
-                            color='#1a2221'
+                        onPress={handleSubmit}
+                        title="Create Acount"
+                        color='#1a2221'
                     />
                 </View>
             </ImageBackground>

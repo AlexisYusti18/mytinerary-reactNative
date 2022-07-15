@@ -6,6 +6,7 @@ import DrawerNavigation from './navigation/Drawer';
 import { NavigationContainer } from "@react-navigation/native"
 
 const reduxStore= configureStore({reducer: mainReducer})
+
 export default function App() {
   return (
       <Provider store={reduxStore}>

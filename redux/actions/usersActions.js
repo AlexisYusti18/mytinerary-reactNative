@@ -17,13 +17,13 @@ const userActions={
                     success:user.data.success
             }
         })
-        //console.log(user.data.message);
+        console.log(user.data.message);
         }
     },
     logIn:(logInUser)=>{
         return async (dispatch, getState)=>{
             const user= await axios.post(`${url}/api/logIn`,{logInUser})
-            console.log(user);
+            // console.log(user);
             if(user.data.success) {
                 await AsyncStorage.setItem('token', user.data.response.token)
                 dispatch({type:'USER', payload: user.data.response.userData})
@@ -39,6 +39,7 @@ const userActions={
                         }
                         
                     })
+                    console.log(user.data.message)
                 }
         }
     },

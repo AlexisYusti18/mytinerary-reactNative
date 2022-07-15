@@ -11,15 +11,14 @@ function LogIn(props){
 
     const user=useSelector(store=>store.userReducer.user)
     
-    const handleSubmit= async (event)=>{
+    const handleSubmit=()=>{
         const logInUser= {
             email: email,
             password: password,
         }
         props.logIn(logInUser)
-        console.log(logInUser)
+        // console.log(logInUser)
     }
-    console.log(handleSubmit);
 
     
     return(
@@ -35,7 +34,8 @@ function LogIn(props){
                             <Button
                                 onPress={handleSubmit}
                                 title="log in"
-                                color='#1a2221'/>
+                                color='#1a2221'
+                            />
                         </View>
                         <View style={styles.accountCtn}>
                             <Text>Do not you have an account yet?</Text>
