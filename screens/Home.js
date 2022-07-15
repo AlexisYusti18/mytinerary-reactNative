@@ -1,7 +1,6 @@
 import { ScrollView, StyleSheet} from 'react-native';
 import Welcome from '../components/Hero'
 import CallToAction from '../components/CallToAction';
-// import Footer from '../components/Footer'
 import Carousel from '../components/Carousel'
 
 export default function Home(props){
@@ -11,7 +10,6 @@ export default function Home(props){
                 <Welcome/>
                 <CallToAction navigation={props.navigation}/>
                 <Carousel/>
-                {/* <Footer/> */}
             </ScrollView>
         )
 }

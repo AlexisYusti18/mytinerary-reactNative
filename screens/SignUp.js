@@ -26,7 +26,9 @@ function SignUp(props){
           email:email,
           password:password,
           imageUser:imageUser,
-          country:selectCountry
+          country:'argentina',
+          role:'user',
+          from:'signUp'
         }
         //console.log(event);
         props.signUp(userData)
@@ -52,11 +54,6 @@ function SignUp(props){
                     <TextInput onChangeText={setEmail} style={styles.textInput} placeholder='Email'></TextInput>
                     <TextInput onChangeText={setPassword} style={styles.textInput} placeholder='Password'></TextInput>
                     <TextInput onChangeText={setImageUser} style={styles.textInput} placeholder='Profile Pic'></TextInput>
-                    {/* <Picker>
-                        {countrys.map((country,index)=>
-                            <Picker.Item label={country} value={country}/>
-                        )}
-                    </Picker> */}
                     <Button
                         onPress={handleSubmit}
                         title="Create Acount"

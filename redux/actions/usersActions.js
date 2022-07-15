@@ -11,7 +11,6 @@ const userActions={
             dispatch({
                 type:"MESSAGE" ,
                 payload: {
-                    //ALERT
                     view:true,
                     message:user.data.message, 
                     success:user.data.success
@@ -30,7 +29,6 @@ const userActions={
             }   
             else{
                         dispatch({
-                            type:"MESSAGE" ,
                             payload: {
                                 //ALERT
                                 view:true, //MOSTRAR LA VISTA
