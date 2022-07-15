@@ -1,5 +1,6 @@
 import axios from 'axios';
 const url="https://mytinerary-yusti.herokuapp.com"
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const userActions={
     signUp:(userData)=>{
@@ -22,11 +23,9 @@ const userActions={
     logIn:(logInUser)=>{
         return async (dispatch, getState)=>{
             const user= await axios.post(`${url}/api/logIn`,{logInUser})
-            //console.log(user);
-            //console.log(user.data.response.userData);
-            //console.log(user.data.response.token);
+            console.log(user);
             if(user.data.success) {
-                localStorage.setItem('token', user.data.response.token)
+                await AsyncStorage.setItem('token', user.data.response.token)
                 dispatch({type:'USER', payload: user.data.response.userData})
             }   
             else{

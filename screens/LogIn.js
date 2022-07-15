@@ -1,8 +1,27 @@
+import { useState } from "react";
 import { View,StyleSheet, ImageBackground,TextInput, Image,Text,TouchableOpacity, Button } from "react-native";
+import userActions from "../redux/actions/usersActions";
+import { connect } from 'react-redux';
+import {useSelector} from 'react-redux';
 
 
+function LogIn(props){
+    const [email,setEmail]=useState()
+    const [password,setPassword]=useState()
 
-export default function LogIn(props){
+    const user=useSelector(store=>store.userReducer.user)
+    
+    const handleSubmit= async (event)=>{
+        const logInUser= {
+            email: email,
+            password: password,
+        }
+        props.logIn(logInUser)
+        console.log(logInUser)
+    }
+    console.log(handleSubmit);
+
+    
     return(
         <View>
             <ImageBackground style={styles.ctn} source={require('../assets/signup.png')}>
@@ -10,12 +29,14 @@ export default function LogIn(props){
                     <Image style={styles.logo} source={require('../assets/logoSignup.png')}/>
                     <Text>Log In with your account!</Text>
                     <View>
-                        <TextInput style={styles.textInput} placeholder="Email"></TextInput>
-                        <TextInput style={styles.textInput} placeholder="Password"></TextInput>
-                        <Button
-                            title="log in"
-                            color='#492c36'
-                        />
+                        <View>
+                            <TextInput onChangeText={setEmail} style={styles.textInput} value={email} placeholder="Email"></TextInput>
+                            <TextInput onChangeText={setPassword} style={styles.textInput} value={password} placeholder="Password"></TextInput>
+                            <Button
+                                onPress={handleSubmit}
+                                title="log in"
+                                color='#1a2221'/>
+                        </View>
                         <View style={styles.accountCtn}>
                             <Text>Do not you have an account yet?</Text>
                             <TouchableOpacity
@@ -32,6 +53,10 @@ export default function LogIn(props){
         </View>
     )
 }
+const mapDispatchToProps= {logIn: userActions.logIn}
+export default connect(null, mapDispatchToProps)(LogIn)
+
+
 const styles=StyleSheet.create({
     ctn:{
         backgroundColor:'#fff',
@@ -66,7 +91,7 @@ const styles=StyleSheet.create({
         marginTop:10
     },
     buttonSignup:{
-        backgroundColor:'#492c36',
+        backgroundColor:'#1a2221',
         padding:6,
         borderRadius:10,
         color:'white',

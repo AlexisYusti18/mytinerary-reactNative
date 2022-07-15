@@ -2,16 +2,14 @@ import { StyleSheet, Text, View,Button,Image,TouchableOpacity} from 'react-nativ
 
 
 export default function CallToAction(props){
-    // console.log(props.navigation);
+    // console.log(props)
     return(
         <View>
             <View style={styles.ctncall}>
                 <Image style={styles.logo}/>
                 <Text style={styles.titlecallTo}>Haven't you visited the city of your dreams yet?</Text>
                 <TouchableOpacity 
-                onPress={()=>{
-                    props.navigation.navigate('Cities')
-                }}>
+                    onPress={()=> props.navigation.navigate('Cities')}>
                     <View>
                         <Text style={styles.button}>CHOOSE YOUR NEXT DESYINATION NOW</Text>
                     </View>
@@ -23,7 +21,7 @@ export default function CallToAction(props){
 const styles = StyleSheet.create({
     ctncall:{
         backgroundColor:'white',
-        height:200,
+        height:230,
         justifyContent:'center',
         alignItems:'center', 
     },

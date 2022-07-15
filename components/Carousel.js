@@ -1,9 +1,9 @@
 import React, {useRef,useEffect} from 'react';
-import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
-import {View,Text,Dimensions,StyleSheet,TouchableOpacity,Platform}from 'react-native';
+import Carousel from 'react-native-snap-carousel';
+import {View,Text,Dimensions,StyleSheet,TouchableOpacity,Platform,ImageBackground}from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions';
-import {ViewPropTypes} from 'deprecated-react-native-prop-types';
+// import {ViewPropTypes} from 'deprecated-react-native-prop-types';
 
 const {width: screenWidth} = Dimensions.get('window');
 
@@ -24,16 +24,14 @@ export default function MyCarousel(){
   const renderItem = ({item, index}, parallaxProps) => {
     return (
       <View style={styles.item}>
-        <ParallaxImage
+        <ImageBackground
+          style={styles.image}
           source={{uri: item.image}}
           containerStyle={styles.imageContainer}
-          style={styles.image}
           parallaxFactor={0.4}
-          {...parallaxProps}
-        />
-            <Text style={styles.title} numberOfLines={2}>
-                {item.title}
-            </Text>
+          {...parallaxProps}>
+            <Text style={styles.title} numberOfLines={2}>{item.name}</Text>
+        </ImageBackground>
 
       </View>
     );
@@ -51,9 +49,9 @@ export default function MyCarousel(){
         itemWidth={screenWidth - 60}
         data={cities}
         loop={true}
-        autoplay={true}
-        autoplayDelay={2000}
-        autoplayInterval={3000}
+        // autoplay={true}
+        // autoplayDelay={2000}
+        // autoplayInterval={3000}
         renderItem={renderItem}
         hasParallaxImages={true}
       />
@@ -81,8 +79,12 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     justifyContent:'center',
     alignItems:'center',
+    height:350,
+    marginTop:20
   },
   title:{
-    color:'red',
+    color:'white',
+    fontSize:30,
+    fontWeight:'900'
   }
 });

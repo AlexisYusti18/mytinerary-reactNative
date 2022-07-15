@@ -35,7 +35,7 @@ export default function Cards(props){
             <View style={styles.citiesCtn}>
             {filter.length > 0 ? filter.map((city,index)=>(
                 <View key={index}>
-                    <TouchableHighlight onPress={()=>props.navigation.navigate("itineraries", {id:city._id})}>
+                    <TouchableHighlight onPress={()=>props.navigation.navigate("Details", {id:city._id})}>
                         <ImageBackground style={styles.cards} source={{uri:city.image}}>
                             <Text style={styles.titleCities}>{city.name}, {city.country}</Text>
                         </ImageBackground>

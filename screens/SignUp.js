@@ -52,7 +52,7 @@ function SignUp(props){
                     <TextInput style={styles.textInput} placeholder='Profile Pic'></TextInput>
                     <Button
                             title="Create Acount"
-                            color='#492c36'
+                            color='#1a2221'
                     />
                 </View>
             </ImageBackground>
@@ -85,7 +85,7 @@ const styles=StyleSheet.create({
         height:60
     },
     buttonLogin:{
-        backgroundColor:'#492c36',
+        backgroundColor:'#1a2221',
         padding:6,
         borderRadius:10,
         color:'white',
