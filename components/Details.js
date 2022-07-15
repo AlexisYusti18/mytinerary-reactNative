@@ -17,7 +17,7 @@ export default function Details(props){
         //eslint-disable-next-line
     },[reload])
     const city=useSelector(store=> store.citiesReducer.oneCity)
-    // console.log(city)
+    // console.log(city)r
     
     return(
         <ScrollView>
@@ -42,7 +42,7 @@ export default function Details(props){
 
             <View style={styles.itinerariesCtn}>
                 {city.itineraries?.length > 0 ?  city.itineraries?.map((itinerary,index)=>
-                    <Tinerary itinerary={itinerary} key={itinerary._id} setReload={setReload} />
+                    <Tinerary itinerary={itinerary} key={itinerary._id} setReload={setReload} navigation={props.navigation}/>
                 ): <Text>THERE ARE NO ITINERARIES</Text>}
             </View>
 
@@ -78,6 +78,6 @@ const styles= StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         flexDirection:'column',
-        backgroundColor:"red"
+        backgroundColor:"red",
     },
 })

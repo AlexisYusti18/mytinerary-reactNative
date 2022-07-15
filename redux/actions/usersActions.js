@@ -46,7 +46,7 @@ const userActions={
     logOut:(closeUser)=>{
         return async(dispatch, getState)=>{
             // const user= await axios.post(`${url}/api/logOut`,{closeUser})
-            localStorage.removeItem('token')
+            AsyncStorage.removeItem('token')
             dispatch({type:'USER', payload:null})
             // return user
         }
@@ -74,7 +74,7 @@ const userActions={
                         })
                     } 
                         else{
-                            localStorage.removeItem('token')
+                            AsyncStorage.removeItem('token')
                         }
                 }).catch(error=>{
                     //console.log(error);
@@ -87,7 +87,7 @@ const userActions={
                                 success:false
                             }
                         })
-                        localStorage.removeItem('token')
+                        AsyncStorage.removeItem('token')
                     }
                     
                 })

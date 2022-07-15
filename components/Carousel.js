@@ -43,7 +43,7 @@ export default function MyCarousel(){
       <TouchableOpacity onPress={goForward}>
       </TouchableOpacity>
       <Carousel
-        layout={'stack'}
+        layout={'default'}
         ref={carouselRef}
         sliderWidth={screenWidth}
         sliderHeight={screenWidth}

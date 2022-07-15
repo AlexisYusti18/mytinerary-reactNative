@@ -1,13 +1,17 @@
 import React, {useState} from "react";
-import {Text,View, StyleSheet,Pressable,TouchableOpacity,Image} from "react-native";
+import {Text,View, StyleSheet,Pressable,TouchableOpacity,Image,Button,ScrollView} from "react-native";
 import {useDispatch, useSelector} from 'react-redux';
 import citiesActions from "../redux/actions/citiesActions"
 import commentsActions from "../redux/actions/commentsActions";
 import { MaterialIcons } from '@expo/vector-icons';
+import Activities from "../components/Activities";
+import Comments from '../components/Comments'
 
-export default function Tinerary({itinerary,setReload}){
+export default function Tinerary({itinerary,setReload,navigation}){
+    // console.log(navigation)
     const dispatch= useDispatch()
     const [text, setText]=useState('')
+    const [open, setOpen] = useState(false)
     const user=useSelector(store=>store.userReducer.user)
     
     async function likeOrDislike(idItinerario){
@@ -25,8 +29,6 @@ export default function Tinerary({itinerary,setReload}){
         setReload(R=>!R)
         setText("")
     }
-
-
 
     return(
     <>
@@ -49,7 +51,7 @@ export default function Tinerary({itinerary,setReload}){
                                             </View>
                                         )
                                     }
-                                        {itinerary?.likes.length}
+                                       <Text>{itinerary?.likes.length}</Text>
                             </Pressable>
                         </>
                         :
@@ -74,15 +76,36 @@ export default function Tinerary({itinerary,setReload}){
                 <View>
                     <Text>#{itinerary.tag} #{itinerary.tag2} #{itinerary.tag3}</Text>
                 </View>
-                <TouchableOpacity
-                onPress={()=>{}}
-                style={styles.accordeonCtn}
-                activeOpacity={0.9}
-                >
-                    <View style={[styles.accordeon]}>
-                        <Text style={[styles.heading]}>VER MAS</Text>
-                    </View>
-                </TouchableOpacity>
+                <View>
+                    <Text>Activities !</Text>
+                    {itinerary.activities?.length > 0 ? itinerary.activities?.map((activity,index)=>
+                        <Activities activity={activity} key={activity._id}/>
+                    ): <Text>no hay actividades</Text>}
+                </View>
+
+                <View>
+                    <Text>COMMENTS({itinerary.comments.length})!</Text>
+                    {itinerary?.comments.map((comment)=>
+                        <Comments comment={comment} key={comment._id} setReload={setReload}/>
+                    )}
+
+                    {user ? 
+                        <View>
+                            <View>aca deja comentar</View>
+                            <Pressable onPress={()=>addComment(itinerary._id)}>
+                                <Text>comment</Text>
+                            </Pressable>
+                        </View>
+                    
+                    :     
+                        <Text>INICIA SESION PARA COMENTAR</Text>
+                    }
+                </View>
+
+               
+
+
+
             </View>
                
         </View>
@@ -98,8 +121,8 @@ const styles= StyleSheet.create({
         justifyContent:'center',
         overflow:'hidden',
         borderRadius:20,
-        width:'80%',
-        height:340,
+        width:'93%',
+        height:700,
         margin: 10,
         borderColor:'#212121',
         borderWidth:2
@@ -113,7 +136,16 @@ const styles= StyleSheet.create({
         width:50,
         height:50
     },
-    accordeonCtn:{
-
+    accordeon:{
+        width:'100%',
+        backgroundColor:'red',
+        justifyContent:'center',
+        flexDirection:'row',
+        alignItems:'center'
     },
+    viewmore:{
+        padding:10,
+        margin:4,
+        backgroundColor:'white'
+    }
 })

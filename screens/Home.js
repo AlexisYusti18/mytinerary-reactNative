@@ -17,6 +17,6 @@ export default function Home(props){
 }
 const styles=StyleSheet.create({
     ctn:{
-        backgroundColor:'#1a2221', 
+        backgroundColor:'#fff', 
     },
 })
