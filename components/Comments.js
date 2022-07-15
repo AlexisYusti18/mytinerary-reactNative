@@ -1,7 +1,9 @@
 import {useDispatch, useSelector} from 'react-redux';
 import { useState } from 'react';
 import commentsActions from '../redux/actions/commentsActions';
-import { Text, View,Image } from 'react-native';
+import { Text, View,Image,TextInput,StyleSheet,Pressable } from 'react-native';
+import { Entypo } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function Comments({comment, setReload}){
     const dispatch= useDispatch()
@@ -27,29 +29,45 @@ export default function Comments({comment, setReload}){
             {comment.userId?._id !== user?.id ?
                 <View>
                     <View>
-                        <Image source={{uri:comment.userId.imageUser}}/>
+                        <Image style={styles.imageUser} source={{uri:comment.userId.imageUser}}/>
                         <Text>{comment.userId.name}, {comment.userId.lastName}</Text>
                     </View>
                     <View>
-                        <Text>{comment.comment}</Text>
+                        <TextInput onTextInput={(e)=> setModify(e.currentTarget.textContent)} style={styles.inputCtn}>{comment.comment}</TextInput>
+                        <View>
+                            <Pressable onPress={()=>modifyComment(comment._id)}>
+                                <Entypo name="edit" size={35} color="green" />
+                            </Pressable>
+                            <Pressable onPress={()=>deleteComment(comment._id)}>
+                                <AntDesign name="delete" size={35} color="red" />
+                            </Pressable>
+                        </View>
                     </View>
                 </View>
                 :
                 <View>
                     <View>
-                        <Image source={{uri:comment.userId.imageUser}}/>
+                        <Image style={styles.imageUser} source={{uri:comment.userId.imageUser}}/>
                         <Text>{comment.userId.name}, {comment.userId.lastName}</Text>
                     </View>
                     <View>
-                        <View>.</View>
+                        <Text>hola</Text>
                     </View>
                 </View>
                 
                 }
         </>
     )
-
-
-
-
 }
+
+const styles=StyleSheet.create({
+    inputCtn:{
+        backgroundColor:'gray',
+        margin:20
+    },
+    imageUser:{
+        borderRadius:50,
+        height:50,
+        width:50
+    }
+})

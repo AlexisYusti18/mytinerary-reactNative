@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Text,View, StyleSheet,Pressable,TouchableOpacity,Image,Button,ScrollView} from "react-native";
+import {Text,View, StyleSheet,Pressable,TouchableOpacity,Image,Button,ScrollView,TextInput } from "react-native";
 import {useDispatch, useSelector} from 'react-redux';
 import citiesActions from "../redux/actions/citiesActions"
 import commentsActions from "../redux/actions/commentsActions";
@@ -91,9 +91,9 @@ export default function Tinerary({itinerary,setReload,navigation}){
 
                     {user ? 
                         <View>
-                            <View>aca deja comentar</View>
+                            <TextInput style={styles.inputTEXT} onTextInput={(e)=>setText(e.currentTarget.textContent)}></TextInput>
                             <Pressable onPress={()=>addComment(itinerary._id)}>
-                                <Text>comment</Text>
+                                <Text style={styles.buttonComment}>comment</Text>
                             </Pressable>
                         </View>
                     
@@ -122,7 +122,7 @@ const styles= StyleSheet.create({
         overflow:'hidden',
         borderRadius:20,
         width:'93%',
-        height:700,
+        height:1000,
         margin: 10,
         borderColor:'#212121',
         borderWidth:2
@@ -147,5 +147,16 @@ const styles= StyleSheet.create({
         padding:10,
         margin:4,
         backgroundColor:'white'
+    },
+    inputTEXT:{
+        padding:10,
+        backgroundColor:'red'
+    },
+    buttonComment:{
+        padding:10,
+        color:'white',
+        width:80,
+        backgroundColor:'orange',
+        marginTop:10
     }
 })

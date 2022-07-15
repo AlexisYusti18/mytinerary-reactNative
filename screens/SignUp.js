@@ -30,7 +30,7 @@ function SignUp(props){
         }
         //console.log(event);
         props.signUp(userData)
-        //console.log(userData);
+        console.log(userData);
       }
 
 
