@@ -23,21 +23,25 @@ export default function Details(props){
         <ScrollView>
             <View>
                 <ImageBackground style={styles.image} source={{uri:city.image}}>
-                    <Text style={styles.title}>{city.name}, {city.country}</Text>
+                    <View style={{width:'100%', height:'100%', backgroundColor:'rgba(0,0,0,0.3)'}}></View>
+                    <View style={styles.textView}>
+                        <Text style={styles.title}>{city.name}</Text>
+                        <Text style={styles.country}>{city.country}</Text>
+                    </View>
                 </ImageBackground>
                 <View style={styles.dataCtn}>
                     <View>
                         <Image style={styles.banner} source={{uri:city.imagebanner}}/>
                     </View>
                     <View>
-                        <MaterialCommunityIcons name="cash-multiple" size={30} color="black"/>
+                        <MaterialCommunityIcons name="cash-multiple" size={30} color="green"/>
                         <Text>{city.currency}</Text>
                     </View>
                     <View>
-                        <FontAwesome name="language" size={30} color="black" />
+                        <FontAwesome name="language" size={30} color="blue" />
                         <Text>{city.language}</Text>
                     </View>
-                </View>
+                </View>  
             </View>
 
             <View style={styles.itinerariesCtn}>
@@ -53,17 +57,27 @@ export default function Details(props){
 const styles= StyleSheet.create({
     image:{
         width:'100%',
-        height:300,
+        height:420,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        resizeMode:'cover',
     },
     title:{
         fontSize:40,
-        color:'#1a2221',
-        fontWeight:'600'
+        color:'#fff',
+    },
+    country:{
+        fontSize:20,
+        color:'#aaa',
+        marginLeft:10
+    },
+    textView:{
+        position:'absolute',
+        bottom:10,
+        left:10
     },
     dataCtn:{
-        backgroundColor:'#2352',
+        backgroundColor:'#fff',
         width:'100%',
         height:100,
         flexDirection:'row',
@@ -71,13 +85,14 @@ const styles= StyleSheet.create({
         justifyContent:'space-around'
     },
     banner:{
-        width:40,
-        height:40
+        width:70,
+        height:40,
+        borderWidth:.6,
+        borderColor:'black'
     },
     itinerariesCtn:{
         justifyContent:'center',
         alignItems:'center',
         flexDirection:'column',
-        backgroundColor:"red",
     },
 })

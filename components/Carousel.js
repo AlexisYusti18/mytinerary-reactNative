@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   title:{
     color:'white',
     fontSize:30,
-    fontWeight:'900'
+    fontWeight:"900"
   },
   imageButton:{
     backgroundColor:'rgba(0,0,0,0.5)',

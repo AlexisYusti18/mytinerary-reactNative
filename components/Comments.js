@@ -28,32 +28,32 @@ export default function Comments({comment, setReload}){
         <>
             {comment.userId?._id !== user?.id ?
                 <View>
-                    <View>
+                    <View style={{justifyContent:'center', alignItems:'center'}}>
                         <Image style={styles.imageUser} source={{uri:comment.userId.imageUser}}/>
-                        <Text>{comment.userId.name}, {comment.userId.lastName}</Text>
+                        <Text style={{fontSize:20}}>{comment.userId.name}, {comment.userId.lastName}</Text>
                     </View>
-                    <View>
-                        <TextInput onTextInput={(e)=> setModify(e.currentTarget.textContent)} style={styles.inputCtn}>{comment.comment}</TextInput>
+                    <View style={{justifyContent:'center',alignItems:'center'}}>
+                        <Text style={styles.commentText}>{comment.comment}</Text>
+                    </View>
+                </View>:
                         <View>
-                            <Pressable onPress={()=>modifyComment(comment._id)}>
-                                <Entypo name="edit" size={35} color="green" />
-                            </Pressable>
-                            <Pressable onPress={()=>deleteComment(comment._id)}>
-                                <AntDesign name="delete" size={35} color="red" />
-                            </Pressable>
+                            <View style={{justifyContent:'center', alignItems:'center'}}>
+                                <Image style={styles.imageUser} source={{uri:comment.userId.imageUser}}/>
+                                <Text style={{fontSize:20, textAlign:'center', margin:5}}>{comment.userId.name}, {comment.userId.lastName}</Text>
+                            </View>
+                            <View style={{justifyContent:'center', alignItems:'center'}}>
+                                <TextInput style={styles.campText} onTextInput={(e)=>setModify(e.currentTarget.textContent)}>{comment.comment}</TextInput>
+                                <View style={{justifyContent:'center', alignItems:'center', flexDirection:'row', margin:15}}>
+                                    <Pressable onPress={()=>modifyComment(comment._id)}>
+                                        <Entypo style={{margin:10}} name="edit" size={24} color="green" />
+                                    </Pressable>
+                                    <Pressable onPress={()=>deleteComment(comment._id)}>
+                                        <AntDesign style={{margin:10}} name="delete" size={24} color="red"/>
+                                    </Pressable>
+                                </View>
+                            </View>
+                           
                         </View>
-                    </View>
-                </View>
-                :
-                <View>
-                    <View>
-                        <Image style={styles.imageUser} source={{uri:comment.userId.imageUser}}/>
-                        <Text>{comment.userId.name}, {comment.userId.lastName}</Text>
-                    </View>
-                    <View>
-                        <Text>hola</Text>
-                    </View>
-                </View>
                 
                 }
         </>
@@ -62,12 +62,29 @@ export default function Comments({comment, setReload}){
 
 const styles=StyleSheet.create({
     inputCtn:{
-        backgroundColor:'gray',
-        margin:20
+        backgroundColor:'#fff',
+        margin:20,
+        borderColor:'black',
+        borderWidth:1,
+        padding:15,
+        color:'black',
     },
     imageUser:{
         borderRadius:50,
         height:50,
         width:50
+    },
+    commentText:{
+        backgroundColor:'#848484',
+        width:'95%',
+        height:40,
+        padding:10,
+        marginTop:10,
+        marginBottom:10
+    },
+    campText:{
+        backgroundColor:'#c6c6c6',
+        padding:10,
+        width:'90%'
     }
 })

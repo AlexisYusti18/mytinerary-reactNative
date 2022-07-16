@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { View,StyleSheet, ImageBackground,TextInput, Image,Text,TouchableOpacity, Button } from "react-native";
+import { View,StyleSheet, ImageBackground,TextInput,Dimensions,Text,TouchableOpacity, Button } from "react-native";
 import userActions from "../redux/actions/usersActions";
 import { connect } from 'react-redux';
 import {useSelector} from 'react-redux';
+const {width,height}= Dimensions.get('window')
 
 
 function LogIn(props){
@@ -23,29 +24,26 @@ function LogIn(props){
     
     return(
         <View>
-            <ImageBackground style={styles.ctn} source={require('../assets/signup.png')}>
-                <View style={styles.inputCnt}>
-                    <Image style={styles.logo} source={require('../assets/logoSignup.png')}/>
-                    <Text>Log In with your account!</Text>
-                    <View>
-                        <View>
-                            <TextInput onChangeText={setEmail} style={styles.textInput} placeholder="Email"></TextInput>
-                            <TextInput onChangeText={setPassword} style={styles.textInput}  placeholder="Password"></TextInput>
-                            <Button
-                                onPress={handleSubmit}
-                                title="log in"
-                                color='#1a2221'
-                            />
-                        </View>
-                        <View style={styles.accountCtn}>
+            <ImageBackground style={styles.bg} source={require('../assets/fondo.jpg')}>
+                <View style={[styles.container, {backgroundColor:'rgba(255,255,255)'}]}>
+                    <View style={styles.inputContainer}>
+                        <View style={styles.headerContainer}>
+                            <Text style={styles.h1}>Welcome!</Text>
                             <Text>Do not you have an account yet?</Text>
                             <TouchableOpacity
                             onPress={()=>{
                                     props.navigation.navigate('SignUp')
                             }}>
-                                <Text style={styles.buttonSignup}>create one now!</Text>
+                                <Text style={styles.buttonLogin}>create one now!</Text>
                             </TouchableOpacity>
-                        </View>
+                    </View>
+                            <TextInput onChangeText={setEmail} style={styles.textInput} placeholder="Email" placeholderTextColor={'white'} color={'white'}></TextInput>
+                            <TextInput onChangeText={setPassword} style={styles.textInput}  placeholder="Password" placeholderTextColor={'white'} color={'white'}></TextInput>
+                            <Button
+                                onPress={handleSubmit}
+                                title="log in"
+                                color='#957b41'
+                            />
                     </View>
                 </View>
             </ImageBackground>
@@ -58,44 +56,42 @@ export default connect(null, mapDispatchToProps)(LogIn)
 
 
 const styles=StyleSheet.create({
-    ctn:{
-        backgroundColor:'#fff',
+    bg:{
         width:'100%',
         height:'100%',
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        resizeMode:'cover'
     },
-    inputCnt:{
-        backgroundColor:'white',
-        width:'90%',
-        height:400,
+    container:{
+        paddingHorizontal:20,
+        paddingVertical:80,
+        height:height/1.05,
+    },
+    centralHeaderItem:{
+        flex:0.7,
+        textAlign:'center'
+    },
+    h1:{
+        fontSize:40,
+        fontWeight:"500",
+    },
+    inputContainer:{
+        alignItems:'center',
         justifyContent:'center',
-        alignItems:'center'
-    },
-    logo:{
-        width:60,
-        height:60
+        width:'100%',
     },
     textInput:{
-        height:40,
-        width:300,
-        borderColor:'#ccc',
-        borderWidth:2,
-        marginBottom:20,
-        borderRadius:10,
-        padding:10
+        width:width/1.15,
+        borderBottomWidth:2,
+        borderBottomColorl:'#aaa',
+        padding:10,
+        marginVertical:20,
     },
-    accountCtn:{
-        justifyContent:'center',
-        alignItems:'center',
-        marginTop:10
-    },
-    buttonSignup:{
-        backgroundColor:'#1a2221',
-        padding:6,
-        borderRadius:10,
-        color:'white',
-        marginBottom:4,
-        marginTop:5
+    buttonLogin:{
+        color:"white",
+        fontSize:20,
+        textDecorationLine:'underline'
     }
+    
 })

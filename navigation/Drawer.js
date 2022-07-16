@@ -10,6 +10,7 @@ import usersActions from "../redux/actions/usersActions";
 import {StyleSheet} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import LogOut from "../screens/LogOut";
+import About from "../screens/About";
 
 const Drawer= createDrawerNavigator()
 function DrawerNavigation(props){
@@ -38,7 +39,8 @@ function DrawerNavigation(props){
             <Drawer.Screen name="Cities" component={CitiesStack}/>
             {!props.user && <Drawer.Screen name="SignUp" component={SignUp}/>}
             {!props.user && <Drawer.Screen name="LogIn" component={Login}/>}
-            {props.user && <Drawer.Screen name="LogOut" component={LogOut}/>}
+            {props.user && <Drawer.Screen name="Config" component={LogOut}/>}
+            <Drawer.Screen name="About" component={About}/>
         </Drawer.Navigator>
         </>
     )

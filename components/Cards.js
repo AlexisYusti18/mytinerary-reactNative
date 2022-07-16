@@ -1,6 +1,5 @@
 import React, {useEffect,useState} from "react"
-import {StyleSheet,TouchableOpacity,View,Text,TouchableHighlight,Image,Dimensions,ScrollView} from "react-native";
-
+import {StyleSheet,TouchableOpacity,View,Text,Image,Dimensions,ScrollView} from "react-native";
 import citiesActions from "../redux/actions/citiesActions"
 const {width,height}= Dimensions.get('window')
 import {useDispatch, useSelector} from 'react-redux';
@@ -41,7 +40,7 @@ export default function Cards(props){
                         </TouchableOpacity>
                 </View>
 
-                )): <Text>NO ITINERARIES</Text>}
+                )): <Text>THE CITY YOU ARE LOOKING FOR IS NOT FOUND</Text>}
 
             </View>
         </ScrollView>

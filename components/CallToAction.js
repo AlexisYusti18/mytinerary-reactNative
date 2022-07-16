@@ -45,14 +45,14 @@ const styles = StyleSheet.create({
         fontSize:17,
         width:'90%',
         textAlign:'center',
-        fontWeight:'700',
+        fontWeight:"500",
     },
     imagecall:{
         width:300,
         height:500,
     },
     button:{
-        backgroundColor:'#1a2221',
+        backgroundColor:'#07311f',
         padding:10,
         color:'white',
         fontSize:15,
@@ -65,11 +65,12 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         height:200,
         alignItems:'center',
-        justifyContent:'space-between'
+        justifyContent:'space-around'
     },
     image:{
-        width:100,
-        height:170,
-        margin:20
+        width:130,
+        height:220,
+        margin:20,
+        marginTop:60
     }
 })

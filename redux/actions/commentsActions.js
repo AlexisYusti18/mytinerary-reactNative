@@ -1,10 +1,11 @@
 import axios from 'axios'
 const url="https://mytinerary-yusti.herokuapp.com"
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const commentsActions={
     
     addComment:(data)=>{
-        const token= localStorage.getItem('token')
+        const token= AsyncStorage.getItem('token')
         //console.log(token)
         return async(dispatch, getState)=>{
             if(data.comment !== "") {
@@ -35,7 +36,7 @@ const commentsActions={
     },
     modifyComment: (commentModify)=>{
         //console.log(commentModify)
-        const token= localStorage.getItem('token')
+        const token= AsyncStorage.getItem('token')
         return async (dispatch, getState)=>{
             const res= await axios.put(`${url}/api/comment`, {commentModify}, {
                 headers:{
@@ -54,7 +55,7 @@ const commentsActions={
         }
     },
     deleteComment:(id)=>{
-        const token= localStorage.getItem('token')
+        const token= AsyncStorage.getItem('token')
         
         return async(dispatch, getState)=>{
             const res= await axios.post(`${url}/api/comment/${id}`, {}, {
