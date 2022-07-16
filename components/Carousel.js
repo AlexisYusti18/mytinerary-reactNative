@@ -31,7 +31,9 @@ export default function MyCarousel(){
           containerStyle={styles.imageContainer}
           parallaxFactor={0.4}
           {...parallaxProps}>
-            <Text style={styles.title} numberOfLines={2}>{item.name}</Text>
+            <TouchableOpacity style={styles.imageButton}>
+              <Text style={styles.title} numberOfLines={2}>{item.name}</Text>
+            </TouchableOpacity>
         </ImageBackground>
 
       </View>
@@ -40,6 +42,9 @@ export default function MyCarousel(){
 
   return (
     <View style={styles.container}>
+      <View style={styles.titleCtn}>
+        <Text style={styles.titleMy}>POPULAR MYTINERARIES !</Text>
+      </View>
       <TouchableOpacity onPress={goForward}>
       </TouchableOpacity>
       <Carousel
@@ -50,9 +55,9 @@ export default function MyCarousel(){
         itemWidth={screenWidth - 60}
         data={cities}
         loop={true}
-        // autoplay={true}
-        // autoplayDelay={2000}
-        // autoplayInterval={3000}
+        autoplay={true}
+        autoplayDelay={1000}
+        autoplayInterval={3000}
         renderItem={renderItem}
         hasParallaxImages={true}
       />
@@ -87,5 +92,23 @@ const styles = StyleSheet.create({
     color:'white',
     fontSize:30,
     fontWeight:'900'
+  },
+  imageButton:{
+    backgroundColor:'rgba(0,0,0,0.5)',
+    width:'100%',
+    height:'15%',
+    bottom:0,
+    left:0,
+    position:'absolute',
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  titleCtn:{
+    marginTop:30,
+  },
+  titleMy:{
+    fontSize:20,
+    textAlign:'center',
+    color:'black'
   }
 });

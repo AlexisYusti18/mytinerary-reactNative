@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { View,StyleSheet,Picker,ImageBackground,TextInput,Image,Text,TouchableOpacity,Button} from "react-native";
 import userActions from '../redux/actions/usersActions';
 import { connect } from 'react-redux';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 
 function SignUp(props){
@@ -83,7 +84,7 @@ const styles=StyleSheet.create({
         width:'90%',
         height:600,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
     },
     logo:{
         width:60,

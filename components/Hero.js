@@ -17,7 +17,7 @@ export default function Welcome(){
 const styles = StyleSheet.create({
     imgBackground:{
         textAlign:'center',
-        height:600,
+        height:440,
         width:'100%',
         marginTop:0,
         justifyContent:'flex-start',
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     logo:{
       height:120,
       width:120,
-      marginBottom:60
+      marginBottom:40
     },
     ctntitle:{
         display:'flex',
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         alignItems:'center'
     } ,
     title:{
-        color:'#1a2221',
+        color:'white',
         fontSize:50,
         fontFamily:'sans-serif',
         fontWeight: "900"
@@ -45,7 +45,5 @@ const styles = StyleSheet.create({
         color:'white',
         fontSize:22,
         marginTop:20,
-        backgroundColor:  '#00000070',
-        color:'#FFFFFF'
     }
 })
